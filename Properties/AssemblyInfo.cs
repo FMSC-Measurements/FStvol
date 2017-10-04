@@ -10,7 +10,7 @@ using Android.App;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("U.S. Forest Service")]
 [assembly: AssemblyProduct ("Tree Add On Volume")]
-[assembly: AssemblyCopyright ("Xamarin")]
+[assembly: AssemblyCopyright ("")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 

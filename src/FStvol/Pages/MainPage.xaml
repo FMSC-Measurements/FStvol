@@ -5,10 +5,12 @@
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
-                <ListView ItemsSource="{Binding Files}">
+                <ListView x:Name="_fileListView" ItemsSource="{Binding Files}" ItemTapped="_fileListView_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}" ></TextCell>
+                            <TextCell Text="{Binding Name}" >
+                                
+                            </TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

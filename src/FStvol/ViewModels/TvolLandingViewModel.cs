@@ -1,9 +1,11 @@
-﻿using System;
+﻿using FStvol.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tvol.Data;
 using Xamarin.Forms;
 
 namespace FStvol.ViewModels
@@ -14,9 +16,9 @@ namespace FStvol.ViewModels
         private Command _showProfilesCommand;
         private Command _showReportsCommand;
 
-        public TvolLandingViewModel()
+        public TvolLandingViewModel(TvolDatabase database)
         {
-
+            Database = database;
         }
 
         public override void Init(object data)
@@ -27,6 +29,8 @@ namespace FStvol.ViewModels
         public ICommand ShowTreesCommand => _showTreesCommand = new Command(ShowTrees);
         public ICommand ShowProfilesCommand => _showProfilesCommand = new Command(ShowProfiles);
         public ICommand ShowReportsCommand => _showReportsCommand = new Command(ShowReports);
+
+        public TvolDatabase Database { get; private set; }
 
         private void ShowReports(object obj)
         {
@@ -39,8 +43,14 @@ namespace FStvol.ViewModels
         }
 
         private void ShowTrees(object obj)
-        {
+        {            
+            var vm = new TreeViewModel(Database);
+            var view = new TreePage();
+            view.BindingContext = vm;
+            vm.Init(null);
+            vm.NavigationService = this.NavigationService;
 
+            NavigationService.PushAsync(view);
         }
     }
 }

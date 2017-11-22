@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FStvol.Pages.TreePage"
+             Title="Trees">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill">
+            <ScrollView BackgroundColor="Green" VerticalOptions="StartAndExpand">
+                <ListView ItemsSource="{Binding Trees}" SelectedItem="{Binding CurrentTree}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="SP" />
+                                <Label Text="{Binding Species}" />
+                                <Label Text="Prod" />
+                                <Label Text="{Binding Product}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <StackLayout BackgroundColor="Blue">
+                <Picker x:Name="_treeProfile_Picker" Title="Tree Profile" 
+                        SelectedItem="{Binding CurrentTree.Profile}" ItemsSource="TreeProfiles" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="DBH" />
+                    <Entry Text="{Binding CurrentTree.DBH}" />
+                    <Label Text="Height" />
+                    <Entry Text="{Binding CurrentTree.Height}"/>
+                </StackLayout>
+                
+            </StackLayout>
+            <StackLayout BackgroundColor="Red" 
+                         Orientation="Horizontal" VerticalOptions="EndAndExpand"  HorizontalOptions="Fill">
+                <Button Text="+" Command="{Binding AddTreeCommand}" 
+                        HorizontalOptions="End" FontSize="Large" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

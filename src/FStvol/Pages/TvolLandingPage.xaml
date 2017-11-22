@@ -4,7 +4,9 @@
              x:Class="FStvol.Pages.TvolLandingPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <Button Text="Trees" Command="{Binding ShowTreesCommand}"/>
+            <Button Text="Profiles" Command="{Binding ShowProfilesCommand}"/>
+            <Button Text="Reports" Command="{Binding ShowReportsCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

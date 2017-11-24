@@ -5,35 +5,44 @@
              Title="Trees">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill">
-            <ScrollView BackgroundColor="Green" VerticalOptions="StartAndExpand">
+            <ScrollView VerticalOptions="StartAndExpand">
                 <ListView ItemsSource="{Binding Trees}" SelectedItem="{Binding CurrentTree}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="SP" />
-                                <Label Text="{Binding Species}" />
-                                <Label Text="Prod" />
-                                <Label Text="{Binding Product}" />
-                            </StackLayout>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="SP" />
+                                    <Label Text="{Binding Species}" />
+                                    <Label Text="Prod" />
+                                    <Label Text="{Binding Product}" />
+                                    <Label Text="DBH:" />
+                                    <Label Text="{Binding DBH}" />
+                                    <Label Text="Height:" />
+                                    <Label Text="{Binding Height}" />
+                                </StackLayout>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <StackLayout BackgroundColor="Blue">
-                <Picker x:Name="_treeProfile_Picker" Title="Tree Profile" 
-                        SelectedItem="{Binding CurrentTree.Profile}" ItemsSource="TreeProfiles" />
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="DBH" />
-                    <Entry Text="{Binding CurrentTree.DBH}" />
-                    <Label Text="Height" />
-                    <Entry Text="{Binding CurrentTree.Height}"/>
+            <Frame>
+                <StackLayout>
+                    <Picker x:Name="_treeProfile_Picker" Title="Tree Profile" 
+                        SelectedIndex="{Binding CurrentTreeProfileIndex}" ItemsSource="{Binding TreeProfiles}" />
+                    <StackLayout Orientation="Horizontal" BindingContext="{Binding CurrentTree}">
+                        <Label VerticalTextAlignment="Center" Text="DBH" />
+                        <Entry WidthRequest="40" Text="{Binding DBH}" />
+                        <Label VerticalTextAlignment="Center" Text="Height" />
+                        <Entry WidthRequest="40" Text="{Binding Height}"/>
+                    </StackLayout>
+
                 </StackLayout>
-                
-            </StackLayout>
-            <StackLayout BackgroundColor="Red" 
-                         Orientation="Horizontal" VerticalOptions="EndAndExpand"  HorizontalOptions="Fill">
-                <Button Text="+" Command="{Binding AddTreeCommand}" 
-                        HorizontalOptions="End" FontSize="Large" />
+            </Frame>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
+                <Button BackgroundColor="Green" Text="+" Command="{Binding AddTreeCommand}" 
+                        HorizontalOptions="StartAndExpand" FontSize="Large" />
+                <Button BackgroundColor="Red" Text="Delete" VerticalOptions="End"
+                        Command="{Binding DeleteTreeCommand}" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

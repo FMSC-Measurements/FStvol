@@ -26,7 +26,7 @@ namespace FStvol.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string propertyName)
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
             NotifyPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }

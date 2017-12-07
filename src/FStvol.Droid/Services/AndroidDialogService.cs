@@ -8,6 +8,7 @@ using FStvol.Services;
 
 namespace FStvol.Droid.Services
 {
+    //TODO class nolonger used
     public class AndroidDialogService : IDialogService
     {
         private const int READ_REQUEST_CODE = 42;

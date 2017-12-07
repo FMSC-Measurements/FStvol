@@ -1,9 +1,5 @@
 ﻿using FStvol.Pages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Tvol.Data;
 using Xamarin.Forms;
@@ -23,7 +19,6 @@ namespace FStvol.ViewModels
 
         public override void Init(object data)
         {
-
         }
 
         public ICommand ShowTreesCommand => _showTreesCommand = new Command(ShowTrees);
@@ -34,21 +29,36 @@ namespace FStvol.ViewModels
 
         private void ShowReports(object obj)
         {
-            throw new NotImplementedException();
+            var vm = new ReportsViewModel(Database);
+            vm.NavigationService = NavigationService;
+
+            var view = new ReportsPage();
+            view.BindingContext = vm;
+            vm.Init(null);
+
+            NavigationService.PushAsync(view);
         }
 
         private void ShowProfiles(object obj)
         {
-            throw new NotImplementedException();
+            var vm = new ProfilesViewModel(Database);
+            vm.NavigationService = this.NavigationService;
+
+            var view = new ProfilesPage();
+            view.BindingContext = vm;
+            vm.Init(null);
+
+            NavigationService.PushAsync(view);
         }
 
         private void ShowTrees(object obj)
-        {            
+        {
             var vm = new TreeViewModel(Database);
+            vm.NavigationService = this.NavigationService;
+
             var view = new TreePage();
             view.BindingContext = vm;
             vm.Init(null);
-            vm.NavigationService = this.NavigationService;
 
             NavigationService.PushAsync(view);
         }

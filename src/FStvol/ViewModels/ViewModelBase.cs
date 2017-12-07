@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FStvol.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,32 +10,13 @@ using Xamarin.Forms;
 
 namespace FStvol.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INPC_base
     {
         public INavigation NavigationService { get; set; }
 
 
-
         public abstract void Init(object data);
 
-        #region INotifyPropertyChanged
-        public void SetValue<T>(ref T target, T value, [CallerMemberName] string propertyName = null)
-        {
-            target = value;
-            NotifyPropertyChanged(propertyName);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            NotifyPropertyChanged(new PropertyChangedEventArgs(propertyName));
-        }
-
-        public virtual void NotifyPropertyChanged(PropertyChangedEventArgs ea)
-        {
-            PropertyChanged?.Invoke(this, ea);
-        }
-        #endregion
+        
     }
 }

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FStvol.Pages.ReportsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView HorizontalOptions="StartAndExpand">
+                <ListView ItemsSource="{Binding Reports}" ItemSelected="ReportsListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding CreatedDate}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button Text="+" Command="{Binding AddReportCommand}"/>
+                <Button Text="Delete" Command="{Binding DeleteReportCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

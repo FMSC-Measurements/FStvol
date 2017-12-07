@@ -6,7 +6,7 @@ using FStvol.Droid.Services;
 
 namespace FStvol.Droid.Activities
 {
-    [Activity(Label = "FStvol.Droid", MainLauncher = true)]
+    [Activity(Label = "FStvol", MainLauncher = true)]
     public class MainActivity : FormsApplicationActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -16,9 +16,9 @@ namespace FStvol.Droid.Activities
 
             FStvol.App.DialogService = new AndroidDialogService();
             FStvol.App.FileSystemService = new AndroidFileSystemService();
+            FStvol.App.AlertService = new AndroidAlertService();
 
             var app = new App();
-            
 
             LoadApplication(app);
         }

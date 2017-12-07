@@ -13,6 +13,7 @@ namespace FStvol
     {
         public static IDialogService DialogService { get; set; }
         public static IFileSystemService FileSystemService { get; set; }
+        public static IAlertService AlertService { get; set; }
 
 
         public App()

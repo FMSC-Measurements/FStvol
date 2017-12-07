@@ -10,15 +10,23 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="SP" />
-                                    <Label Text="{Binding Species}" />
-                                    <Label Text="Prod" />
-                                    <Label Text="{Binding Product}" />
-                                    <Label Text="DBH:" />
-                                    <Label Text="{Binding DBH}" />
-                                    <Label Text="Height:" />
-                                    <Label Text="{Binding Height}" />
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="SP" />
+                                        <Label Text="{Binding Species}" />
+                                        <Label Text="Prod" />
+                                        <Label Text="{Binding Product}" />
+                                        <Label Text="L/D:"/>
+                                        <Label Text="{Binding LiveDead}"/>
+                                        <Label Text="DBH:" />
+                                        <Label Text="{Binding DBH}" />
+                                        <Label Text="Height:" />
+                                        <Label Text="{Binding Height}" />
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <Label Text="{Binding CreatedDate}" FontSize="Micro"/>
+                                        <Label Text="{Binding ModifiedDate}" FontSize="Micro"/>
+                                    </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -31,9 +39,9 @@
                         SelectedIndex="{Binding CurrentTreeProfileIndex}" ItemsSource="{Binding TreeProfiles}" />
                     <StackLayout Orientation="Horizontal" BindingContext="{Binding CurrentTree}">
                         <Label VerticalTextAlignment="Center" Text="DBH" />
-                        <Entry WidthRequest="40" Text="{Binding DBH}" />
+                        <Entry WidthRequest="40" Text="{Binding DBH}" Keyboard="Numeric"/>
                         <Label VerticalTextAlignment="Center" Text="Height" />
-                        <Entry WidthRequest="40" Text="{Binding Height}"/>
+                        <Entry WidthRequest="40" Text="{Binding Height}" Keyboard="Numeric"/>
                     </StackLayout>
 
                 </StackLayout>

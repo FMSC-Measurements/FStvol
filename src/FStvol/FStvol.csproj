@@ -12,4 +12,10 @@
     <ProjectReference Include="..\..\Tvol.Data\source\Tvol.Data\Tvol.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Pages\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

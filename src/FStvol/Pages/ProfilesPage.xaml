@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FStvol.Pages.ProfilesPage"
+             Title="Profiles">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <ListView ItemsSource="{Binding TreeProfiles}" SelectedItem="{Binding CurrentTreeProfile}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Species:"/>
+                                    <Label Text="{Binding Species}" />
+                                    <Label Text="Product:" />
+                                    <Label Text="{Binding Product, StringFormat='{0:00}'}" />
+                                    <Label Text="LiveDead:"/>
+                                    <Label Text="{Binding LiveDead}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+            <StackLayout BindingContext="{Binding CurrentTreeProfile}">
+                <Label Text="Species:" VerticalTextAlignment="Center"/>
+                <Entry Text="{Binding Species}"/>
+                <Label Text="Product:" VerticalTextAlignment="Center"/>
+                <Entry Text="{Binding Product, StringFormat='{0:00}'}"/>
+                <Label Text="LiveDead:" VerticalTextAlignment="Center"/>
+                <Picker SelectedItem="{Binding LiveDead}">
+                    <Picker.Items>
+                        <x:String>L</x:String>
+                        <x:String>D</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
+            <StackLayout>
+                <Button Text="+" Command="{Binding AddTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}"/>
+                <Button Text="Delete" Command="{Binding DeleteTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

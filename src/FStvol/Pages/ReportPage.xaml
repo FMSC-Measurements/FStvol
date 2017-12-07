@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FStvol.Pages.ReportPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView HorizontalOptions="StartAndExpand">
+                <ListView ItemsSource="{Binding Trees}" RowHeight="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Switch IsToggled="{Binding IsSelected}" />
+                                        <Label Text="SP" />
+                                        <Label Text="{Binding Tree.Species}" />
+                                        <Label Text="Prod" />
+                                        <Label Text="{Binding Tree.Product}" />
+                                        <Label Text="L/D:"/>
+                                        <Label Text="{Binding Tree.LiveDead}"/>
+                                        <Label Text="DBH:" />
+                                        <Label Text="{Binding Tree.DBH}" />
+                                        <Label Text="Height:" />
+                                        <Label Text="{Binding Tree.Height}" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Volume, StringFormat='{0:0.00}'}"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Tree.CreatedDate}" FontSize="Micro"/>
+                                        <Label Text="{Binding Tree.ModifiedDate}" FontSize="Micro"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <StackLayout HorizontalOptions="End">
+                <Label Text="Calculated Volume"/>
+                <Label Text="{Binding CalculatedVolume, StringFormat='{0:0.00}'}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -57,7 +57,13 @@ namespace FStvol.ViewModels
             get
             {
                 if (CurrentTree == null) { return -1; }
-                else { return TreeProfiles.FindIndex(x => x.Product == CurrentTree.Product && x.Species == CurrentTree.Species); }
+                else
+                {
+                    return TreeProfiles.FindIndex(x => 
+                        x.Product == CurrentTree.Product 
+                        && x.Species == CurrentTree.Species 
+                        && x.LiveDead == CurrentTree.LiveDead);
+                }
             }
             set
             {
@@ -69,6 +75,7 @@ namespace FStvol.ViewModels
                     var profile = TreeProfiles[value];
                     CurrentTree.Species = profile.Species;
                     CurrentTree.Product = profile.Product;
+                    CurrentTree.LiveDead = profile.LiveDead;
                 }
                 NotifyPropertyChanged();
             }
@@ -98,7 +105,7 @@ namespace FStvol.ViewModels
 
         private void AddTree(object obj)
         {
-            var newTree = new Tree();
+            var newTree = new Tree() { CreatedDate = DateTime.Now };
             newTree.PropertyChanged += Tree_PropertyChanged;
 
             using (var conn = Database.OpenConnection())
@@ -114,7 +121,13 @@ namespace FStvol.ViewModels
 
         private void Tree_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            if(e.PropertyName == nameof(Tree.CreatedDate)) { return; }
+            if(e.PropertyName == nameof(Tree.ModifiedDate)) { return; }
+
             var tree = (Tree)sender;
+
+            tree.ModifiedDate = DateTime.Now;
+
             using (var conn = Database.OpenConnection()) 
             {
 

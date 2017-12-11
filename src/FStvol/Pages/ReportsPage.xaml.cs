@@ -25,11 +25,14 @@ namespace FStvol.Pages
 			InitializeComponent ();
 		}
 
-        public void ReportsListView_ItemSelected(object sender, SelectedItemChangedEventArgs ea)
+        public void _reportsListView_ItemSelected(object sender, SelectedItemChangedEventArgs ea)
         {
             var report = (Report)ea.SelectedItem;
+            if(report == null) { return;}
 
             ViewModel?.SelectReportCommad.Execute(report);
+
+            _reportsListView.SelectedItem = null;
         }
     }
 }

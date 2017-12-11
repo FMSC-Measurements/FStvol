@@ -4,18 +4,22 @@
              x:Class="FStvol.Pages.ReportsPage">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView HorizontalOptions="StartAndExpand">
-                <ListView ItemsSource="{Binding Reports}" ItemSelected="ReportsListView_ItemSelected">
+            <ScrollView VerticalOptions="StartAndExpand">
+                <ListView x:Name="_reportsListView" ItemsSource="{Binding Reports}" ItemSelected="_reportsListView_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding CreatedDate}"></TextCell>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding CreatedDate}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                                    <Button Text="Delete" />
+                                </StackLayout>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Button Text="+" Command="{Binding AddReportCommand}"/>
-                <Button Text="Delete" Command="{Binding DeleteReportCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

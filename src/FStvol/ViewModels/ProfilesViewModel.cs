@@ -2,6 +2,7 @@
 using Dapper.Contrib.Extensions;
 using FStvol.Util;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Tvol.Data;
 using Xamarin.Forms;
@@ -48,7 +49,7 @@ namespace FStvol.ViewModels
                 {
                     treeProfile.PropertyChanged += TreeProfile_PropertyChanged;
                 }
-                CurrentTreeProfile = null;
+                CurrentTreeProfile = TreeProfiles.FirstOrDefault();
             }
         }
 

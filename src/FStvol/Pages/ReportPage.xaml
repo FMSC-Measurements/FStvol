@@ -4,8 +4,8 @@
              x:Class="FStvol.Pages.ReportPage">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView HorizontalOptions="StartAndExpand">
-                <ListView ItemsSource="{Binding Trees}" RowHeight="100">
+            <ScrollView VerticalOptions="CenterAndExpand">
+                <ListView  ItemsSource="{Binding Trees}" RowHeight="100">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -23,7 +23,10 @@
                                         <Label Text="Height:" />
                                         <Label Text="{Binding Tree.Height}" />
                                     </StackLayout>
-                                    <Label Text="{Binding Volume, StringFormat='{0:0.00}'}"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Volume:"/>
+                                        <Label Text="{Binding Volume, StringFormat='{0:0.00}'}"/>
+                                    </StackLayout>
                                     <StackLayout>
                                         <Label Text="{Binding Tree.CreatedDate}" FontSize="Micro"/>
                                         <Label Text="{Binding Tree.ModifiedDate}" FontSize="Micro"/>
@@ -34,7 +37,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <StackLayout HorizontalOptions="End">
+            <StackLayout VerticalOptions="End">
                 <Label Text="Calculated Volume"/>
                 <Label Text="{Binding CalculatedVolume, StringFormat='{0:0.00}'}"/>
             </StackLayout>

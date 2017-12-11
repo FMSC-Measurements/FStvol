@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:FStvol.Converters"
              x:Class="FStvol.Pages.ProfilesPage"
              Title="Profiles">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -24,13 +30,13 @@
                 </ListView>
             </ScrollView>
 
-            <StackLayout BindingContext="{Binding CurrentTreeProfile}">
+            <StackLayout BackgroundColor="DarkOliveGreen">
                 <Label Text="Species:" VerticalTextAlignment="Center"/>
-                <Entry Text="{Binding Species}"/>
+                <Entry Text="{Binding CurrentTreeProfile.Species}"/>
                 <Label Text="Product:" VerticalTextAlignment="Center"/>
-                <Entry Text="{Binding Product, StringFormat='{0:00}'}"/>
+                <Entry Text="{Binding CurrentTreeProfile.Product, StringFormat='{0:00}'}"/>
                 <Label Text="LiveDead:" VerticalTextAlignment="Center"/>
-                <Picker SelectedItem="{Binding LiveDead}">
+                <Picker SelectedItem="{Binding CurrentTreeProfile.LiveDead}">
                     <Picker.Items>
                         <x:String>L</x:String>
                         <x:String>D</x:String>
@@ -38,9 +44,11 @@
                 </Picker>
             </StackLayout>
 
-            <StackLayout>
-                <Button Text="+" Command="{Binding AddTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}"/>
-                <Button Text="Delete" Command="{Binding DeleteTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}"/>
+            <StackLayout VerticalOptions="End" Orientation="Horizontal">
+                <Button Text="+" Command="{Binding AddTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}" 
+                        HorizontalOptions="StartAndExpand" BackgroundColor="Green"/>
+                <Button Text="Delete" Command="{Binding DeleteTreeProfileCommand}" CommandParameter="{Binding CurrentTreeProfile}" 
+                        HorizontalOptions="End" BackgroundColor="Red"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Linq;
 using Tvol.Data;
@@ -71,9 +72,18 @@ namespace FStvol.ViewModels
             {
                 using (var conn = Database.OpenConnection())
                 {
-                    var tree_report = new Tree_Report() { TreeID = ti.Tree.TreeID, ReportID = Report.ReportID };
-                    conn.Insert(tree_report);
-                    Tree_Reports.Add(tree_report.TreeID, tree_report);
+                    
+                    try
+                    {
+                        var tree_report = new Tree_Report() { TreeID = ti.Tree.TreeID, ReportID = Report.ReportID };
+                        conn.Insert(tree_report);
+                        Tree_Reports.Add(tree_report.TreeID, tree_report);
+                    }
+                    catch(SqliteException ex)
+                    {
+                        App.AlertService.ShowAlert("Can't add tree to report");
+                    }
+                    
                 }
             }
 

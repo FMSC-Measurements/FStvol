@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:FStvol.CustomControls"
              x:Class="FStvol.Pages.TreePage"
              Title="Trees">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill">
             <ScrollView VerticalOptions="StartAndExpand">
@@ -33,9 +39,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <Frame>
-                <StackLayout>
-                    <Picker x:Name="_treeProfile_Picker" Title="Tree Profile" 
+            <Frame BackgroundColor="DarkOliveGreen">
+                <StackLayout >
+                    <custom:CustomPicker x:Name="_treeProfile_Picker" Title="Tree Profile" 
                         SelectedIndex="{Binding CurrentTreeProfileIndex}" ItemsSource="{Binding TreeProfiles}" />
                     <StackLayout Orientation="Horizontal" BindingContext="{Binding CurrentTree}">
                         <Label VerticalTextAlignment="Center" Text="DBH" />

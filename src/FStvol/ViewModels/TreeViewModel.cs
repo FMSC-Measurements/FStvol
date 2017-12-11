@@ -100,7 +100,7 @@ namespace FStvol.ViewModels
 
                 TreeProfiles = conn.Query<TreeProfile>("SELECT * FROM TreeProfile;").ToList();
             }
-            CurrentTree = null;
+            CurrentTree = Trees.FirstOrDefault();
         }
 
         private void AddTree(object obj)

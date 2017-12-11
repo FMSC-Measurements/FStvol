@@ -6,7 +6,7 @@ using FStvol.Droid.Services;
 
 namespace FStvol.Droid.Activities
 {
-    [Activity(Label = "FStvol", MainLauncher = true)]
+    [Activity(Label = "FStvol", MainLauncher = true, Icon = "@drawable/LauncherIcon")]
     public class MainActivity : FormsApplicationActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

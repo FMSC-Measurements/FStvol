@@ -12,20 +12,20 @@ namespace FStvol
 
         public static double CalculateVolume(Tree tree, Regression regression)
         {
-            return CalculateVolume(tree.DBH, regression.CoefficientA, regression.CoefficientB, regression.CoefficientC, regression.RegressionModel);
+            return CalculateVolume(tree.DBH, regression.CoefficientA, regression.CoefficientB, regression.CoefficientC, regression.RegressModel);
         }
 
         public static double CalculateVolume(double dbh, double coef1, double coef2, double coef3, string currModel)
         {
             switch (currModel)
             {
-                case RegressionModel.LINEAR:
+                case RegressModel.LINEAR:
                     return coef1 + coef2 * dbh;
-                case RegressionModel.QUADRATIC:
+                case RegressModel.QUADRATIC:
                     return coef1 + coef2 * dbh + coef3 * dbh * dbh;
-                case RegressionModel.LOG:
+                case RegressModel.LOG:
                     return coef1 + coef2 * Math.Log(dbh);
-                case RegressionModel.POWER:
+                case RegressModel.POWER:
                     return coef1 * Math.Pow(dbh, coef2);
                 default:
                     return 0.0;
